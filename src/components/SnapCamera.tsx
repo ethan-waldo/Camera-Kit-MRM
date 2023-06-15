@@ -33,7 +33,6 @@ const SnapCamera: React.FC = () => {
 
       setSession(cameraKitSession);
       
-      // Use the ref to get the canvas element
       const canvas = canvasRef.current;
       if (canvas) {
         canvas.replaceWith(cameraKitSession.output.live);
@@ -46,7 +45,7 @@ const SnapCamera: React.FC = () => {
     };
 
     init();
-}, [apiToken, lensGroupId]);
+  }, [apiToken, lensGroupId]);
 
   const setCameraKitSource = async (cameraKitSession: CameraKitSession, deviceId?: string) => {
     if (mediaStream) {
@@ -60,7 +59,12 @@ const SnapCamera: React.FC = () => {
 
     await cameraKitSession.setSource(source);
 
-    source.setTransform(Transform2D.MirrorX);
+    const selectedCameraOption = cameraOptions.find(option => option.deviceId === deviceId);
+    if (selectedCameraOption && selectedCameraOption.label.toLowerCase().includes('front')) {
+      source.setTransform(Transform2D.MirrorX);
+    } else {
+      source.setTransform(Transform2D.Identity);
+    }
 
     cameraKitSession.play();
   };
@@ -90,7 +94,7 @@ const SnapCamera: React.FC = () => {
 
   return (
     <Container className="vh-100 d-flex flex-column justify-content-center align-items-center">
-      <canvas ref={canvasRef} id="canvas-container" width="1920" height="1080" className="mw-100"></canvas>
+      <canvas ref={canvasRef} id="canvas-container" className="mw-100"></canvas>
       <Row className="w-100 mt-3 justify-content-center">
         <Col xs={12} md={6}>
           <Form.Group className="mb-3">
