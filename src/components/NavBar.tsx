@@ -13,7 +13,8 @@ const NavBar: React.FC = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="https://www.mrmdesigns.ai/">Website</Nav.Link>
-          <Nav.Link as={Link} to="/main">CameraKit</Nav.Link>
+          <Nav.Link as={Link} to="/CameraKit">CameraKit</Nav.Link>
+          <Nav.Link as={Link} to="/PrivacyPolicy">Privacy Policy</Nav.Link>
         </Nav>
       </Navbar.Collapse>
       </Container>
