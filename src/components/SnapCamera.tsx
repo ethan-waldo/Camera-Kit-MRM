@@ -94,7 +94,7 @@ const SnapCamera: React.FC = () => {
 
   return (
     <Container className="vh-100 d-flex flex-column justify-content-center align-items-center">
-      <canvas ref={canvasRef} id="canvas-container" className="mw-100"></canvas>
+    <canvas ref={canvasRef} id="canvas-container" className="mw-100" style={{ height: '100vh', maxHeight: '75vh', width: '100%' }}></canvas>
       <Row className="w-100 mt-3 justify-content-center">
         <Col xs={12} md={6}>
           <Form.Group className="mb-3">
