@@ -1,9 +1,11 @@
+import NavBar from './components/NavBar';
 import SnapCamera from './components/SnapCamera';
 
 const App = () => {
   return (
     <div>
-      <SnapCamera />
+    <NavBar />
+    <SnapCamera />
     </div>
   );
 };

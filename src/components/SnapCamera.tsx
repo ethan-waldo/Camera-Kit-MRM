@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import { bootstrapCameraKit, CameraKitSession, createMediaStreamSource, Transform2D, Lens  } from "@snap/camera-kit";
+import './SnapCamera.css';
 
 let mediaStream: MediaStream | null = null;
 
@@ -93,35 +94,35 @@ const SnapCamera: React.FC = () => {
   };
 
   return (
-    <Container className="vh-100 d-flex flex-column justify-content-center align-items-center">
+    <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center dark-mode">
     <canvas ref={canvasRef} id="canvas-container" className="mw-100" style={{ height: '100vh', maxHeight: '75vh', width: '100%' }}></canvas>
-      <Row className="w-100 mt-3 justify-content-center">
-        <Col xs={12} md={6}>
-          <Form.Group className="mb-3">
-            <Form.Label>Camera</Form.Label>
-            <Form.Select value={selectedCamera} onChange={handleCameraChange}>
-              {cameraOptions.map(camera => (
-                <option key={camera.deviceId} value={camera.deviceId}>
-                  {camera.label}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-        </Col>
-        <Col xs={12} md={6}>
-          <Form.Group className="mb-3">
-            <Form.Label>Lens</Form.Label>
-            <Form.Select value={selectedLens} onChange={handleLensChange}>
-              {lensOptions.map(lens => (
-                <option key={lens.id} value={lens.id}>
-                  {lens.name}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-        </Col>
-      </Row>
-    </Container>
+    <Row className="w-100 mt-3 justify-content-center">
+      <Col xs={12} md={6}>
+        <Form.Group className="mb-3 text-light">
+          <Form.Label>Camera</Form.Label>
+          <Form.Select value={selectedCamera} onChange={handleCameraChange} className="bg-dark text-light">
+            {cameraOptions.map(camera => (
+              <option key={camera.deviceId} value={camera.deviceId}>
+                {camera.label}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+      </Col>
+      <Col xs={12} md={6}>
+        <Form.Group className="mb-3 text-light">
+          <Form.Label>Lens</Form.Label>
+          <Form.Select value={selectedLens} onChange={handleLensChange} className="bg-dark text-light">
+            {lensOptions.map(lens => (
+              <option key={lens.id} value={lens.id}>
+                {lens.name}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+      </Col>
+    </Row>
+  </Container>  
   );
 };
 

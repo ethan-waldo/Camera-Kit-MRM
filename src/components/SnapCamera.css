@@ -1,0 +1,13 @@
+.dark-mode {
+  min-height: 100vh;
+  background-color: #121212;
+  color: #f8f9fa;
+}
+
+.bg-dark {
+  background-color: #343a40!important;
+}
+
+.text-light {
+  color: #f8f9fa!important;
+}
